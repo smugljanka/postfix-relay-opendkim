@@ -76,4 +76,4 @@ networks:
 
 secrets:
   domain-dkim-key:
-    file: ./my.local.key.pem
+    file: ./path/to/your.domain.com.priv
