@@ -10,7 +10,7 @@ run postfix/opendkim as docker services.
 1. Build image
 
 	```bash
-	$ sudo docker pull smugljanka/postfix-relay-dkim
+	$ sudo docker pull smugljanka/postfix-relay-opendkim
 	```
 
 ## Usage 

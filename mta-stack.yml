@@ -9,7 +9,7 @@ version: '3.6'
 services:
 
   mail-relay:
-    image: smugljanka/postfix-relay-dkim
+    image: smugljanka/postfix-relay-opendkim
     deploy:
       replicas: 1
       restart_policy:
@@ -38,7 +38,7 @@ services:
       - app-net
 
   mail-dkim:
-    image: smugljanka/postfix-relay-dkim
+    image: smugljanka/postfix-relay-opendkim
     deploy:
       replicas: 1
       restart_policy:
