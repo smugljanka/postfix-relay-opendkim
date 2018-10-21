@@ -36,7 +36,7 @@ run postfix/opendkim as docker services.
 
 ## Note
 + The mentioned services are used as MTA for my web application
-+ The "app-net" is external, it's created outside of the stack
++ The "app-net" network is external, it was created outside the stack
 
 ## Reference
 + [Postfix Howto](http://www.postfix.org/)
