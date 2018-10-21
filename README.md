@@ -6,15 +6,14 @@ run postfix/opendkim as docker services.
 ## Requirement
 + Docker 18.2 and higher
 
-## Installation
-1. Build image
+## Pull image from DockerHub
 
 ```bash
 $ sudo docker pull smugljanka/postfix-relay-opendkim
 ```
 
 ## Usage 
-1. Set the following stack parameters into the mta-stack.yml 
+1. Change the following stack parameters in mta-stack.yml 
    `
    POSTFIX_NETWORKS='127.0.0.0/8,...', POSTFIX_HOSTNAME=mx.<YOUR_FQDN>, 
    POSTFIX_DOMAIN=<YOUR_FQDN>, DKIM_SELECTOR=<YOUR_DKIM_SELECTOR>`
@@ -23,8 +22,8 @@ $ sudo docker pull smugljanka/postfix-relay-opendkim
 ```bash
  $ sudo openssl rsa -in your.domain.com.priv -pubout >your.domain.com.pub
 ```
-3. Setup your DNS - add DKIM record into your domain with the public key created above
-4. Set path to your your.domain.com.priv key into the "domain-dkim-key" secret
+3. Setup your DNS - create DKIM record in your domain - add the public key created above
+4. Change "domain-dkim-key" secret - set path to your your.domain.com.priv key
 ```bash
    secrets:
      domain-dkim-key:
@@ -36,7 +35,7 @@ $ sudo docker stack deploy -c ./mta-stack.yml mta
 ```
 
 ## Note
-+ The mentioned services are used as MTA for my web application
++ The mentioned services are used as internal MTA for web application
 + The "app-net" network is external, it was created outside the stack
 
 ## Reference
