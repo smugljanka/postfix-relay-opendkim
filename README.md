@@ -16,10 +16,8 @@ $ sudo docker pull smugljanka/postfix-relay-opendkim
 ## Usage 
 1. Set the following stack parameters into the mta-stack.yml 
    `
-   POSTFIX_NETWORKS='127.0.0.0/8,...', 
-   POSTFIX_HOSTNAME=mx.<YOUR_FQDN>, 
-   POSTFIX_DOMAIN=<YOUR_FQDN> 
-   DKIM_SELECTOR=<YOUR_DKIM_SELECTOR>`
+   POSTFIX_NETWORKS='127.0.0.0/8,...', POSTFIX_HOSTNAME=mx.<YOUR_FQDN>, 
+   POSTFIX_DOMAIN=<YOUR_FQDN>, DKIM_SELECTOR=<YOUR_DKIM_SELECTOR>`
    
 2. Generate RSA keys for your domain
 ```bash
