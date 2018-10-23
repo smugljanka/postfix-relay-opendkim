@@ -14,17 +14,17 @@ services:
       replicas: 1
       restart_policy:
         condition: none
-    ports:
-      - "25:25"
+#    ports:
+#      - "25:25"
     volumes:
       - postfix-pool:/var/spool/postfix
       - ./scripts/01_init_postfix.sh:/docker-entrypoint.d/01_init_postfix.sh
       - ./scripts/02_init_rsyslog.sh:/docker-entrypoint.d/02_init_rsyslog.sh
     environment:
       TZ: UTC
-      POSTFIX_NETWORKS: '127.0.0.0/8,172.18.0.0/16,172.17.0.0/16'
-      POSTFIX_HOSTNAME: mx.<YOUR_FQDN>
-      POSTFIX_DOMAIN: <YOUR_FQDN>
+      POSTFIX_HOSTNAME: mx.<YOUR_MAIL_DOMAIN>
+      POSTFIX_DOMAIN: <YOUR_MAIL_DOMAIN>
+      POSTFIX_NETWORKS: ''
       DKIM_ADDRESS: mail-dkim
       DKIM_PORT: 14999
     entrypoint: ["/docker-entrypoint.sh"]
@@ -54,7 +54,8 @@ services:
       - ./scripts/02_init_rsyslog.sh:/docker-entrypoint.d/02_init_rsyslog.sh
     environment:
       TZ: UTC
-      POSTFIX_DOMAIN: <YOUR_FQDN>
+      POSTFIX_DOMAIN: <YOUR_MAIL_DOMAIN>
+      POSTFIX_NETWORKS_REGEXP_MAP: '10.*.*.*'
       DKIM_SELECTOR: <YOUR_DKIM_SELECTOR>
       DKIM_PORT: 14999
     entrypoint: ["/docker-entrypoint.sh"]
